@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sources</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="header">
+	  <img src="images/golden_gate.jpg" id="banner_image">
+      <!-- navigation bar source https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp -->
+      <div class="navbar">
+        <a class="navbar_link" href="index.html">Start-Up</a>
+        <div class="dropdown">
+          <a class="navbar_link" href="visualize.html">Visualize</a>
+          <div class="dropdown-content">
+            <a href="visual/map.html">Map</a>
+            <a href="visual/graph.php">Graph</a>
+          </div>
+        </div>
+        <a class="navbar_link" href="contact.html">Contact Us</a>
+        <a class="navbar_curr tab_curr" href="sources.html">Sources</a>
+        <a class="navbar_link" href="about.html">About</a>
+      </div>
+      <h1>Sources</h1>
+      </div>
+
+    <div class="content">
+
+      <p>This project uses three open data APIs to gather information about incidents of crime that were reported in San Francisco.</p>
+      <p>
+	    Open data is the idea that data should be both free to use and publicly available, so that people may access, use, modify and redistribute the data.</p>
+
+	<h1>Project APIs</h1>
+	<p>The three APIs that I used are listed below.</p>
+
+      <h2>San Francisco Police Department Incidents API</h2>
+      <p>
+      <a href="https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783">Police Department Incident Reports: 2018 to Present</a><br/>
+      This API returns information on incidents of crime that have been reported in San Francisco, it is the main source of data used in this project.</p>
+
+      <h2>San Francisco Geographical APIs</h2>
+      <p>These next two APIs were used to create the choropleth <a href="visual/map.html">maps</a>.</p>
+      <p>
+      <a href="https://data.sfgov.org/Public-Safety/Current-Police-Districts/wkhw-cjsf">San Francisco Police Districts</a><br/>
+      This API was used to get the geographical boundaries of the San Francisco Police Districts.</p>
+      <p>
+      <a href="https://data.sfgov.org/Geographic-Locations-and-Boundaries/Analysis-Neighborhoods/p5b7-5n3h">San Francisco Neighbourhoods</a><br/>
+      This API was used to get the geographical boundaries of San Francisco neighbourhoods.</p>
+
+      <br />
+    <img src="images/Hanging_Out_WEB.jpg" class="center_img">
+      </div>
+  </body>
+
+  <footer>© 2019 SFCrimeStats</footer>
+
+</html>

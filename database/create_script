@@ -1,0 +1,97 @@
+CREATE DATABASE project_db;
+USE project_db;
+
+/*************CREATE TABLES*************************/
+/* Create tables in correct order for foreign keys */
+
+/*******************************************/
+/**** Incident Date ****/
+CREATE TABLE day_of_week(
+  id TINYINT(3) UNSIGNED AUTO_INCREMENT,
+  day VARCHAR(9) NOT NULL,
+  PRIMARY KEY(id)
+);
+
+/* TIMESTAMP need to set default otherwise it will change timestamp on update */
+CREATE TABLE date(
+  id INT UNSIGNED AUTO_INCREMENT,
+  date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  day_of_week_id TINYINT(3) UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(day_of_week_id) REFERENCES day_of_week(id)
+);
+
+/**** Incident Category ****/
+CREATE TABLE category(
+  id INT UNSIGNED AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  PRIMARY KEY(id)
+);
+CREATE TABLE subcategory(
+  id INT UNSIGNED AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  category_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(category_id) REFERENCES category(id)
+);
+CREATE TABLE description(
+  id INT UNSIGNED AUTO_INCREMENT,
+  description TEXT NOT NULL,
+  subcategory_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(subcategory_id) REFERENCES subcategory(id)
+);
+
+/**** Incident Location ****/
+CREATE TABLE intersection(
+  id INT UNSIGNED AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  PRIMARY KEY(id)
+);
+CREATE TABLE police_district(
+  id INT UNSIGNED AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  PRIMARY KEY(id)
+);
+CREATE TABLE neighbourhood(
+  id INT UNSIGNED AUTO_INCREMENT,
+  name TEXT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+/* using (10,6) due to
+https://developers.google.com/maps/solutions/store-locator/clothing-store-locator?csw=1
+which recommends this format to store lat and lng for google maps */
+CREATE TABLE location(
+  id INT UNSIGNED AUTO_INCREMENT,
+  latitude DECIMAL(10,6) NOT NULL,
+  longitude DECIMAL(10,6) NOT NULL,
+  intersection_id INT UNSIGNED NOT NULL,
+  police_district_id INT UNSIGNED NOT NULL,
+  neighbourhood_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(intersection_id) REFERENCES intersection(id),
+  FOREIGN KEY(police_district_id) REFERENCES police_district(id),
+  FOREIGN KEY(neighbourhood_id) REFERENCES neighbourhood(id)
+);
+
+/**** Incident ****/
+CREATE TABLE incident(
+  api_row_id BIGINT UNSIGNED NOT NULL,
+  date_id INT UNSIGNED NOT NULL,
+  description_id INT UNSIGNED NOT NULL,
+  location_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY(api_row_id),
+  FOREIGN KEY(date_id) REFERENCES date(id),
+  FOREIGN KEY(description_id) REFERENCES description(id),
+  FOREIGN KEY(location_id) REFERENCES location(id)
+);
+
+/**** fill in days of week ****/
+INSERT INTO day_of_week(day) VALUES("Sunday");
+INSERT INTO day_of_week(day) VALUES("Monday");
+INSERT INTO day_of_week(day) VALUES("Tuesday");
+INSERT INTO day_of_week(day) VALUES("Wednesday");
+INSERT INTO day_of_week(day) VALUES("Thursday");
+INSERT INTO day_of_week(day) VALUES("Friday");
+INSERT INTO day_of_week(day) VALUES("Saturday");

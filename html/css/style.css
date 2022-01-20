@@ -1,0 +1,137 @@
+/*Colour scheme based on banner image
+ * #CEDDF0
+ * #91B2D8
+ * #506695
+ * #7D5827
+ * #CA695E
+ * */
+
+/* align nav bar */
+.header {
+    text-align: center;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    padding-bottom: 60px; /* padding before footer */
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    /* make footer appear at bottom of page */
+    position: fixed;
+    bottom: 0;
+}
+
+#banner_image {
+    width: 100%;
+    height: 30%;
+    max-height: 250px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_image_center.asp */
+.center_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+/* content div will help center web page */
+.content {
+    max-width: 960px;
+    margin: auto;
+}
+
+/* navigation bar */
+.navbar {
+    position: relative;
+    display: inline-block;
+    top: -33px; /* overlap nav bar with banner image */
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+}
+
+.navbar_link {
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 0px 16px;
+}
+
+/* on hover turn link #CA695E and increase box size */
+.navbar_link:hover {
+    color: #CA695E;
+}
+
+/* current page in nav bar is underlined*/
+.navbar_curr {
+    color: black;
+    background-color: white;
+    text-decoration: underline;
+    text-align: center;
+    padding: 0px 16px;
+}
+
+/* current tab in nav bar */
+.tab_curr {
+    padding: 0px 16px;
+    box-shadow: 0px -2px 1px -1px #506695; /* h v blur size colour */
+}
+
+/* nav bar from https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp */
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* don't show drop down by default */
+    position: absolute;
+    /* make drop down same size as parent */
+    left: 0;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    float: none;
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    padding: 0px 16px;
+    background-color: white;
+}
+
+/* act same as top level navbar links */
+.dropdown-content .navbar_curr {
+    color: black;
+    text-decoration: underline;
+}
+
+.dropdown-content .navbar_curr:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+
+.dropdown-content a:hover {
+    color: #CA695E;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* link colors */
+a {
+    text-decoration: none;
+    color: #CA695E;
+}

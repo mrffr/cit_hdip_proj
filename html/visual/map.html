@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Map</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../css/map.css" type="text/css" media="all">
+  </head>
+
+  <body>
+
+       <div class="header">
+	  <img src="../images/golden_gate.jpg" id="banner_image">
+	   <div class="navbar">
+	       <a class="navbar_link" href="../index.html">Start-Up</a>
+	       <div class="dropdown">
+		   <a class="navbar_link tab_curr" href="../visualize.html">Visualize</a>
+		   <div class="dropdown-content">
+		       <a class="navbar_curr" href="map.html">Map</a>
+		       <a href="graph.php">Graph</a>
+		   </div>
+	       </div>
+	       <a class="navbar_link" href="../contact.html">Contact Us</a>
+	       <a class="navbar_link" href="../sources.html">Sources</a>
+	       <a class="navbar_link" href="../about.html">About</a>
+	   </div>
+	    <h1>Map</h1>
+       </div>
+
+    <div class="content">
+
+<script>
+ function change_map(){
+     let selection = document.getElementById('mapoptions');
+     let sel_index = selection.selectedIndex;
+     /* load the correct map based on selection */
+     document.getElementById('map_iframe').src = selection[sel_index].value;
+
+     let map_descs = [
+	 "This cluster map shows the latest 1000 incidents in San Francisco." +
+	 "<br/>" +
+	 "Zoom in and select an incident to see details about it.",
+
+	 "The district map shows the total incidents that occured in each police" +
+	 " district.<br/>The district locations are taken from this "+
+	 "<a href='https://data.sfgov.org/Public-Safety/Current-Police-Districts/wkhw-cjsf'>API</a>." +
+	 "<br/>Hover over a district to see number of incidents.",
+
+	 "The neighbourhood map shows the total incidents that occured in each" +
+	 " neighbourhood.<br/>The neighbourhood locations are taken from this "+
+	 "<a href='https://data.sfgov.org/Geographic-Locations-and-Boundaries/Analysis-Neighborhoods/p5b7-5n3h'>API</a>." +
+	 "<br/>Hover over a neighbourhood to see the number of incidents.",
+     ];
+
+     /* load the correct description based on selection */
+     document.getElementById('map_desc').innerHTML = map_descs[sel_index];
+     /* then scroll down to map */
+     document.getElementById('map_desc').scrollIntoView();
+ }
+</script>
+
+<p>Geographical information on crimes in San Francisco.</p>
+
+<form name="maps">
+    <select id="mapoptions" onchange="change_map();">
+	<option value="../images/clustermap.html">Cluster Map</option>
+	<option value="../images/choropleth_district.html">By District</option>
+	<option value="../images/choropleth_neighbourhood.html">By Neighbourhood</option>
+    </select>
+</form>
+
+<p id="map_desc">This cluster map shows the latest 1000 incidents in San Francisco.<br/>
+    Zoom in and hover over an incident to see details about it.
+</p>
+
+<iframe id="map_iframe" src="../images/clustermap.html"></iframe>
+    </div>
+  </body>
+
+  <footer>© 2019 SFCrimeStats</footer>
+
+</html>

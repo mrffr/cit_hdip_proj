@@ -1,0 +1,71 @@
+ul {
+    padding: 0; /* no padding */
+}
+
+li {
+    text-align: left;
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+
+select {
+    border: none;
+    width: 100%;
+}
+
+label {
+    display: block;
+}
+
+/* make main labels bold */
+.main_label {
+    font-weight: bold;
+}
+
+/* unselected dropdowns are faded and can't be interacted with */
+.faded_dropdown {
+    color: grey;
+    background-color: #CEDDF0;
+    pointer-events: none;
+}
+
+/* the graph area */
+#chartdiv {
+    width: 100%;
+    height: 500px;
+}
+
+/* the dropdown controls area */
+#controldiv {
+    background-color: #eeeeee;
+}
+
+/* put drop down menus in two columns */
+#categ_drops {
+    margin: 0 0 10px 10px;
+    float: left;
+    width: 48%;
+}
+
+#area_drops  {
+    margin: 0 10px 10px 0;
+    float: right;
+    width: 48%;
+}
+
+/* submit button */
+#submitdiv {
+    clear: both;
+    padding: 0 0 10px 10px;
+}
+
+/* customize the submit button itself */
+#submit_btn {
+    background-color: #dddddd;
+}
+
+#submit_btn:hover {
+    background-color: #CA695E;
+}
